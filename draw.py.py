@@ -28,9 +28,6 @@ while run:
         if event.type == pygame.QUIT:
             run = False
             
-        
-        
-        
         if clicked:
             pygame.draw.circle(screen, 'white', event.pos, 2)
             locations.append(event.pos)

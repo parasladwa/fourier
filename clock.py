@@ -35,7 +35,7 @@ while run:
     pygame.draw.line(screen, 'white', clock_center, end_point, 5)
 
     pygame.display.update()
-    pygame.time.delay(100)
+    pygame.time.delay(10)
     
     
     
