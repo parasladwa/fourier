@@ -1,5 +1,6 @@
 import pygame
 import math
+import time
 
 pygame.init()
 
@@ -25,6 +26,7 @@ while run:
 
         if event.type == pygame.MOUSEBUTTONUP:
             clicked = False
+            run = False
             
         if event.type == pygame.QUIT:
             run = False
@@ -34,7 +36,6 @@ while run:
             locations.append(event.pos)
         
         pygame.display.update()
-pygame.QUIT 
 
 
 
@@ -68,9 +69,8 @@ def generateEquation(points):
     eq = f"({x} + {s}({xt}), {y} + {s}({yt}))".replace(" + -", " - ").replace(" - -", " + ")
     return eq, r
 
-eq, r = (generateEquation(locations))
 
-print(f"\n\n\n{r}\n\n{eq}")
+
 
 
 
