@@ -36,6 +36,6 @@ while run:
             locations.append(event.pos)
         
         pygame.display.update()
-pygame.QUIT
+pygame.QUIT 
 print(locations)
 
