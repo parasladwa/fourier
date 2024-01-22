@@ -1,7 +1,8 @@
 import pygame
 import math
 import time
-
+import numpy as np
+import matplotlib as plt
 pygame.init()
 
 WIDTH = 500
@@ -34,6 +35,7 @@ while run:
         if clicked:
             pygame.draw.circle(screen, 'white', event.pos, 2)
             locations.append(event.pos)
+
         
         pygame.display.update()
 
@@ -41,9 +43,9 @@ while run:
 
 
 def generateEquation(points):
-    n = 2
+    n = 1
     x, y = 0, 0
-    s= 3
+    s= 1
 
     for m in range(len(points) - 1, -1, -1):
         points[m] = (points[m][0] - 250, 250 - points[m][1])
@@ -72,6 +74,6 @@ def generateEquation(points):
 
 
 
-
-
+eq, r = generateEquation(locations)
+print(eq, "\n\n", r )
 
