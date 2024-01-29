@@ -12,13 +12,15 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 run = True
 
-
+def halfway(point, vertex):
+    # return half way
 
 def triangle(start, size):
     vertex = [[], [], []]
     vertex[0] = start
-    vertex[1] = [start[0], start[1]+size]
-    vertex[2] = [start[0]+.5*size, start[1] + size*math.sin(60)]
+    vertex[1] = [start[0]+size, start[1]]
+    vertex[2] = [start[0]+.5*size, start[1] + size*math.sin(math.radians(60))]
+    
     return vertex
 
 while run:
@@ -28,13 +30,22 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    start = [100, 100]
-    size = 100
+    start = [200, 200]
+    size = 200
     vertex = triangle(start, size)
     for i in vertex:
-        time.sleep(1)
         pygame.draw.circle(screen, 'white', i, 5)
     
         pygame.display.update()
+    
+    
+    current = (210, 210)
+    n = 100
+    for i in range(0, n):
+        pygame.draw.circle(screen, 'white', current, 2)
+        random = random.choice(vertex)
+        current = halfway(random, current)
         
+    
+    
 pygame.QUIT
