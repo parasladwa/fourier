@@ -1,0 +1,40 @@
+import pygame
+import math
+import time
+import numpy as np
+import matplotlib as plt
+pygame.init()
+
+WIDTH = 500
+HEIGHT = 500
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
+run = True
+
+
+
+def triangle(start, size):
+    vertex = [[], [], []]
+    vertex[0] = start
+    vertex[1] = [start[0], start[1]+size]
+    vertex[2] = [start[0]+.5*size, start[1] + size*math.sin(60)]
+    return vertex
+
+while run:
+    
+    for event in pygame.event.get():
+        
+        if event.type == pygame.QUIT:
+            run = False
+
+    start = [100, 100]
+    size = 100
+    vertex = triangle(start, size)
+    for i in vertex:
+        time.sleep(1)
+        pygame.draw.circle(screen, 'white', i, 5)
+    
+        pygame.display.update()
+        
+pygame.QUIT
