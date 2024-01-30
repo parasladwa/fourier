@@ -3,49 +3,55 @@ import math
 import time
 import numpy as np
 import matplotlib as plt
+import random
 pygame.init()
 
 WIDTH = 500
 HEIGHT = 500
+current = [250, 250]
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 run = True
 
 def halfway(point, vertex):
-    # return half way
+    x = (point[0] + vertex[0])*.5
+    y = (point[1] + vertex[1])*0.5
+    
+    return [x, y]
+
 
 def triangle(start, size):
     vertex = [[], [], []]
     vertex[0] = start
-    vertex[1] = [start[0]+size, start[1]]
-    vertex[2] = [start[0]+.5*size, start[1] + size*math.sin(math.radians(60))]
+    vertex[1] = [start[0] + size, start[1]]
+    vertex[2] = [start[0] + 0.5 * size, start[1] + size * math.sin(math.radians(60))]
     
     return vertex
 
 while run:
     
     for event in pygame.event.get():
-        
         if event.type == pygame.QUIT:
             run = False
 
-    start = [200, 200]
-    size = 200
+    start = [150, 150]
+    size = 300
     vertex = triangle(start, size)
     for i in vertex:
-        pygame.draw.circle(screen, 'white', i, 5)
+        pygame.draw.circle(screen, 'white', i, 1)
     
         pygame.display.update()
     
     
-    current = (210, 210)
-    n = 100
+    
+    n = 1000
     for i in range(0, n):
-        pygame.draw.circle(screen, 'white', current, 2)
-        random = random.choice(vertex)
-        current = halfway(random, current)
+        time.sleep(0.001)
+        pygame.draw.circle(screen, 'white', current, 1)
+        r = random.choice(vertex)
+        current = halfway(r, current)
+        pygame.display.update()
         
     
     
-pygame.QUIT
