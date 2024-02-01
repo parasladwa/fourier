@@ -47,16 +47,15 @@ while run:
         pygame.display.update()
         
         
-        
+locations = [(2,2),(2,3/2),(2,1),(2,1/2),(2,0),(2,-1/2),(2,-1),(2,-3/2),(2,-2),(3/2,-2),(1,-2),(1/2,-2),(0,-2),(-1/2,-2),(-1,-2),(-3/2,-2),(-2,-2),(-2,-3/2),(-2,-1),(-2,-1/2),(-2,0),(-2,1/2),(-2,1),(-2,3/2),(-2,2),(-3/2,2),(-1,2),(-1/2,2),(0,2),(1/2,2),(1,2),(3/2,2)]
         
 
 c = to_complex(locations)
 f = np.fft.fft(c)
-
-for i in f:
-    print(i)
-
+    
+i = np.fft.ifft(f)
+print(i)
 pygame.QUIT
 
 
-https://www.dynamicmath.xyz/fourier-epicycles/
+#https://www.dynamicmath.xyz/fourier-epicycles/
