@@ -47,7 +47,7 @@ while run:
     
     n = 1000
     for i in range(0, n):
-        time.sleep(0.001)
+        time.sleep(0.0001)
         pygame.draw.circle(screen, 'white', current, 1)
         r = random.choice(vertex)
         current = halfway(r, current)

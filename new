@@ -1,0 +1,61 @@
+import pygame
+import numpy as np
+pygame.init()
+
+WIDTH = 500
+HEIGHT = 500
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
+run = True
+
+
+clicked = False
+locations = []
+
+
+
+def to_complex(data):
+    c = []
+    
+    for i in data:
+        c.append(complex(i[0], i[1]))
+    return c
+
+
+
+
+while run:
+    
+    for event in pygame.event.get():
+        
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            clicked = True
+
+        if event.type == pygame.MOUSEBUTTONUP:
+            clicked = False
+            run = False
+            
+        if event.type == pygame.QUIT:
+            run = False
+            
+        if clicked:
+            pygame.draw.circle(screen, 'white', event.pos, 2)
+            locations.append(event.pos)
+
+        
+        pygame.display.update()
+        
+        
+        
+        
+
+c = to_complex(locations)
+f = np.fft.fft(c)
+
+for i in f:
+    print(i)
+
+pygame.QUIT
+
+
