@@ -1,6 +1,6 @@
 import pygame
 import numpy as np
-import math
+import time
 pygame.init()
 
 WIDTH = 500
@@ -8,55 +8,48 @@ HEIGHT = 500
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
-run = True
+square = [
+    (200, 200),   # Top-left corner
+    (300, 200),   # Top-right corner
+    (300, 300),   # Bottom-right corner
+    (200, 300),   # Bottom-left corner
+    (250, 200),   # Top midpoint
+    (300, 250),   # Right midpoint
+    (250, 300),   # Bottom midpoint
+    (200, 250)    # Left midpoint
+]
 
-
-clicked = False
-locations = []
-
-
-
-def to_complex(data):
-    c = []
+for i in square:
+    time.sleep(0.2)
+    pygame.draw.circle(screen, 'white', i, 1)
+    pygame.display.update()
     
-    for i in data:
+
+
+
+def to_complex(arr):
+    c=[]
+    for i in arr:
         c.append(complex(i[0], i[1]))
     return c
-
-
-
-
-
-
-
-while run:
     
+    
+c = to_complex(square)
+print(c)
+
+dft = np.fft.fft(c)
+print(dft)
+
+
+N = len(square)
+
+
+running = True
+while running:
     for event in pygame.event.get():
-        
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            clicked = True
-
-        if event.type == pygame.MOUSEBUTTONUP:
-            clicked = False
-            run = False
-            
         if event.type == pygame.QUIT:
-            run = False
-            
-        if clicked:
-            pygame.draw.circle(screen, 'white', event.pos, 2)
-            locations.append(event.pos)
+            running = False
 
-        
-        pygame.display.update()
-        
-
-
-c = to_complex(locations)
-f = np.fft.fft(c)
-# for i in f:
-#     print(i)
-# for index, coeff in enumerate(f):
 
             
 
