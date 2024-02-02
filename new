@@ -1,7 +1,9 @@
 import pygame
 import numpy as np
 import time
+import math
 pygame.init()
+
 
 WIDTH = 500
 HEIGHT = 500
@@ -36,12 +38,13 @@ def to_complex(arr):
     
 c = to_complex(square)
 print(c)
-
 dft = np.fft.fft(c)
-print(dft)
+times = np.linspace(0, 2*math.pi, 100)
+for t in times:
+    print(t)
+    
 
 
-N = len(square)
 
 
 running = True
