@@ -1,5 +1,6 @@
 import pygame
 import numpy as np
+import math
 pygame.init()
 
 WIDTH = 500
@@ -25,6 +26,9 @@ def to_complex(data):
 
 
 
+
+
+
 while run:
     
     for event in pygame.event.get():
@@ -46,16 +50,18 @@ while run:
         
         pygame.display.update()
         
-        
-locations = [(2,2),(2,3/2),(2,1),(2,1/2),(2,0),(2,-1/2),(2,-1),(2,-3/2),(2,-2),(3/2,-2),(1,-2),(1/2,-2),(0,-2),(-1/2,-2),(-1,-2),(-3/2,-2),(-2,-2),(-2,-3/2),(-2,-1),(-2,-1/2),(-2,0),(-2,1/2),(-2,1),(-2,3/2),(-2,2),(-3/2,2),(-1,2),(-1/2,2),(0,2),(1/2,2),(1,2),(3/2,2)]
-        
+
 
 c = to_complex(locations)
 f = np.fft.fft(c)
-    
-i = np.fft.ifft(f)
-print(i)
-pygame.QUIT
+# for i in f:
+#     print(i)
+# for index, coeff in enumerate(f):
+
+            
+
+
 
 
 #https://www.dynamicmath.xyz/fourier-epicycles/
+#https://thecodingtrain.com/challenges/130-drawing-with-fourier-transform-and-epicycles
